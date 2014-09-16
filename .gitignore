@@ -1,0 +1,7 @@
+/Dist-Zilla-Plugin-PkgVersion-Block-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
+/.prove
