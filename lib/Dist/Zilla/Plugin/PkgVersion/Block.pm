@@ -11,22 +11,15 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
     use MooseX::Types::Perl qw/StrictVersionStr/;
     use namespace::sweep;
 
-    has die_on_existing_version => (
-        is => 'ro',
-        isa => 'Bool',
-        default => 0,
-    );
-
-    sub BUILD {
-        my $self = shift;
-        if(!StrictVersionStr->check($self->zilla->version)) {
-            Carp::croak("Version does not conform to the strict version string format.") ;
-        }
-        return $self;
-    }
-
     sub munge_files {
         my($self) = @_;
+
+        if(!StrictVersionStr->check($self->zilla->version)) {
+            Carp::croak('Version ' . $self->zilla->version . ' does not conform to the strict version string format.') ;
+        }
+        $self->log('Hello 2');
+
+        $self->log('Aobut to munge');
         $self->munge_file($_) for @{ $self->found_files };
     }
 
@@ -38,19 +31,25 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
             $self->log_debug([ "%s has 'bytes' encoding, skipping...", $file->name ]);
             return;
         }
+        $self->log('Still about to munge');
         return $self->munge_perl($file);
     }
 
     sub munge_perl {
         my $self = shift;
         my $file = shift;
-
+        $self->log('Will munge ' . $file->name);
         my $document = $self->ppi_document_for_file($file);
 
-        return if !$self->check_no_existing_version($file, $document);
+        my $package_statements = $document->find('PPI::Statement::Package');
+        if(!$package_statements) {
+            $self->log_debug([ 'skipping %s: no package statement found', $file->name ]);
+            return;
+        }
 
-        my $package_statements = $self->check_package_statements($file, $document);
-        return if !$package_statements;
+        if($self->document_assigns_to_variable($document, '$VERSION')) {
+            $self->log_fatal([ 'existing assignment to $VERSION in %s', $file->name ]);
+        }
 
         my %seen;
         my $munged = 0;
@@ -59,38 +58,41 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
         for my $stmt (@{ $package_statements }) {
             my $package = $stmt->namespace;
             if($seen{ $package }++) {
-                # log
+                $self->log([ 'skipping package re-declaration for %s', $package ]);
                 next STATEMENT;
             }
             if($stmt->content =~ m{ package \s* (?:\#.*)? \n \s* \Q$package}x ) {
-                # log
+                $self->log([ 'skipping private package %s in %s', $package, $file->name] );
                 next STATEMENT;
             }
             if($package =~ m{\P{ASCII}}) {
-                # log
+                $self->log('non-ASCII package name is likely to cause problems');
             }
 
-            my $version_token = PPI::Token::Comment->new(' ' . $self->zilla->version . ' ');
-            $stmt->insert_after($version_token);
-            $munged = 1;
-        }
+            my $count = 0;
+            my $name_token = undef;
 
-    }
+            TOKEN:
+            foreach my $token ($stmt->tokens) {
+                ++$count;
 
+                last if $count == 1 && $token ne 'package';
+                last if $count == 2 && $token !~ m{\s+};
+                last if $count == 3 && $token !~ m{\w+(::\w+)*};
+                $name_token = $token if $count == 3;
+                last if $count == 4 && $token !~ m{\s+};
+                last if $count == 5 && $token ne '{';
 
-    sub check_no_existing_version {
-        my $self = shift;
-        my $file = shift;
-        my $document = shift;
-
-        if($self->document_assigns_to_variable($document, '$VERSION')) {
-            if($self->die_on_existing_version) {
-                $self->log_fatal([ 'existing assignment to $VERSION in %s ', $file->name ]);
+                if($count == 5) {
+                    my $version_token = PPI::Token::Comment->new(" " . $self->zilla->version);
+                    $name_token->insert_after($version_token);
+                    $munged = 1;
+                    last;
+                }
             }
-            $self->log([ 'skipping %s: assigns to $VERSION', $file->name ]);
-            return 0;
         }
-        return 1;
+        $self->save_ppi_document_to_file($document, $file) if $munged;
+
     }
 
     sub check_package_statements {
@@ -113,15 +115,62 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::PkgVersion::Block - Blah blah blah
+Dist::Zilla::Plugin::PkgVersion::Block - L<PkgVersion|Dist::Zilla::Plugin::PkgVersion> for block packages.
 
 =head1 SYNOPSIS
 
-  use Dist::Zilla::Plugin::PkgVersion::Block;
+    # dist.ini
+    [PkgVersion::Block]
 
 =head1 DESCRIPTION
 
-Dist::Zilla::Plugin::PkgVersion::Block is
+This plugin turns:
+
+    package My::Package {
+        ...
+    }
+
+into:
+
+    package My::Package 0.01 {
+        ...
+    }
+
+for all packages in the distribution.
+
+The block package syntax was introduced in Perl 5.14, so this plugin is only usable in projects that only support 5.14+.
+
+There are no attributes:
+
+=over 4
+
+Having an existing assignment to $VERSION in the file is a fatal error.
+
+Packages with a version number between the namespace and the block are silently skipped.
+
+=back
+
+=head1 KNOWN PROBLEMS
+
+In files with more than one package block it is currently necessary to end (all but the last) package blocks with a semicolon. Otherwise only the first package will get a version number:
+
+    package My::Package {
+        ...
+    };
+
+    package My::Package::Other {
+        ...
+    }
+
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Dist::Zilla::Plugin::PkgVersion> (on which this is based)
+
+=item * L<Dist::Zilla::Plugin::OurPkgVersion>
+
+=back
 
 =head1 AUTHOR
 
@@ -135,7 +184,5 @@ Copyright 2014- Erik Carlsson
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=head1 SEE ALSO
 
 =cut

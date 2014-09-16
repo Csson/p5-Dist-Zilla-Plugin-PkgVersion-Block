@@ -1,4 +1,7 @@
 Revision history for Dist-Zilla-Plugin-PkgVersion-Block
 
 {{$NEXT}}
-        - Initial release
+    - Initial release
+
+0.0000 2014-09-16T11:00:00Z CEST
+    - Development starts
