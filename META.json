@@ -36,12 +36,18 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Moose" : "0.92",
+            "MooseX::Types::Perl" : "0",
+            "PPI" : "1.215",
+            "namespace::sweep" : "0.006",
+            "perl" : "v5.14.0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.96"
+            "Test::DZil" : "0",
+            "Test::More" : "0.96",
+            "autodie" : "2.00"
          }
       }
    },
