@@ -2,6 +2,10 @@
 
 Dist::Zilla::Plugin::PkgVersion::Block - [PkgVersion](https://metacpan.org/pod/Dist::Zilla::Plugin::PkgVersion) for block packages.
 
+<div>
+    <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block.svg?branch=master">&nbsp;</a>
+</div>
+
 # SYNOPSIS
 
     # dist.ini

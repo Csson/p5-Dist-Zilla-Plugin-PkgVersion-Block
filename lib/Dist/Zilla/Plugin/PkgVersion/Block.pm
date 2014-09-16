@@ -117,6 +117,8 @@ __END__
 
 Dist::Zilla::Plugin::PkgVersion::Block - L<PkgVersion|Dist::Zilla::Plugin::PkgVersion> for block packages.
 
+=for html <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block.svg?branch=master">&nbsp;</a>
+
 =head1 SYNOPSIS
 
     # dist.ini
