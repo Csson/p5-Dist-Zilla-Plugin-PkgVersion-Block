@@ -63,7 +63,7 @@
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"
       }
    },
-   "version" : "0.01",
+   "version" : "0.0001",
    "x_contributors" : [
       "Erik Carlsson <info@code301.com>"
    ]
