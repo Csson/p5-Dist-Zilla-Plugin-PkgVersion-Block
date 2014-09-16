@@ -92,7 +92,6 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
             }
         }
         $self->save_ppi_document_to_file($document, $file) if $munged;
-
     }
 
     sub check_package_statements {
