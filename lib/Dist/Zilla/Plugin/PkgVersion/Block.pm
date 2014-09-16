@@ -17,9 +17,6 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
         if(!StrictVersionStr->check($self->zilla->version)) {
             Carp::croak('Version ' . $self->zilla->version . ' does not conform to the strict version string format.') ;
         }
-        $self->log('Hello 2');
-
-        $self->log('Aobut to munge');
         $self->munge_file($_) for @{ $self->found_files };
     }
 
@@ -31,14 +28,13 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
             $self->log_debug([ "%s has 'bytes' encoding, skipping...", $file->name ]);
             return;
         }
-        $self->log('Still about to munge');
         return $self->munge_perl($file);
     }
 
     sub munge_perl {
         my $self = shift;
         my $file = shift;
-        $self->log('Will munge ' . $file->name);
+
         my $document = $self->ppi_document_for_file($file);
 
         my $package_statements = $document->find('PPI::Statement::Package');
@@ -87,6 +83,7 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
                     my $version_token = PPI::Token::Comment->new(" " . $self->zilla->version);
                     $name_token->insert_after($version_token);
                     $munged = 1;
+                    $self->log([ 'adding version to %s in %s', $package, $file->name ]);
                     last;
                 }
             }
