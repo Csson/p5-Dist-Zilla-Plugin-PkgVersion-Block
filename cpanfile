@@ -10,3 +10,7 @@ on test => sub {
     requires 'Test::DZil', '0';
     requires 'autodie', '2.00';
 };
+on build => sub {
+    requires 'Test::EOL', '1.5',
+    requires 'Test::Pod', '1.45',
+};
