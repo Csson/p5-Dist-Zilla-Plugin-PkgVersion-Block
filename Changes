@@ -6,16 +6,22 @@ Revision history for Dist-Zilla-Plugin-PkgVersion-Block
  [Bug Fixes]
 
  [Documentation]
- - Cleanup.
 
  [Enhancements]
 
  [Meta]
- - Better dzil settings.
+ - Nothing was indexed. Now uses [MetaProvides::Package].
 
  [New Features]
 
  [Revision]
+
+0.0103 2015-01-15T16:40:32Z CET
+ [Documentation]
+ - Cleanup.
+
+ [Meta]
+ - Better dzil settings.
 
 0.0102 2014-09-17T23:09:34Z CEST
  [Meta]

@@ -57,7 +57,12 @@
          }
       }
    },
-   "provides" : {},
+   "provides" : {
+      "Dist::Zilla::Plugin::PkgVersion::Block" : {
+         "file" : "lib/Dist/Zilla/Plugin/PkgVersion/Block.pm",
+         "version" : "0.0104"
+      }
+   },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
@@ -70,6 +75,6 @@
          "web" : "https://github.com/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"
       }
    },
-   "version" : "0.0103"
+   "version" : "0.0104"
 }
 
