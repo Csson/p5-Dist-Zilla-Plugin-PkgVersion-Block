@@ -1,10 +1,10 @@
 # NAME
 
-Dist::Zilla::Plugin::PkgVersion::Block - [PkgVersion](https://metacpan.org/pod/Dist::Zilla::Plugin::PkgVersion) for block packages.
+Dist::Zilla::Plugin::PkgVersion::Block - PkgVersion for block packages
 
-<div>
-    <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block.svg?branch=master">&nbsp;</a>
-</div>
+# VERSION
+
+Version 0.0103, released 2015-01-15.
 
 # SYNOPSIS
 
@@ -29,11 +29,10 @@ for all packages in the distribution.
 
 The block package syntax was introduced in Perl 5.14, so this plugin is only usable in projects that only support 5.14+.
 
-There are no attributes:
+There are no attributes. However:
 
-> Having an existing assignment to $VERSION in the file is a fatal error.
->
-> Packages with a version number between the namespace and the block are silently skipped.
+- Having an existing assignment to $VERSION in the file is a fatal error.
+- Packages with a version number between the namespace and the block are silently skipped.
 
 # KNOWN PROBLEMS
 
@@ -52,15 +51,21 @@ In files with more than one package block it is currently necessary to end (all 
 - [Dist::Zilla::Plugin::PkgVersion](https://metacpan.org/pod/Dist::Zilla::Plugin::PkgVersion) (on which this is based)
 - [Dist::Zilla::Plugin::OurPkgVersion](https://metacpan.org/pod/Dist::Zilla::Plugin::OurPkgVersion)
 
+# SOURCE
+
+[https://github.com/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block](https://github.com/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block)
+
+# HOMEPAGE
+
+[https://metacpan.org/release/Dist-Zilla-Plugin-PkgVersion-Block](https://metacpan.org/release/Dist-Zilla-Plugin-PkgVersion-Block)
+
 # AUTHOR
 
 Erik Carlsson <info@code301.com>
 
-# COPYRIGHT
+# COPYRIGHT AND LICENSE
 
-Copyright 2014- Erik Carlsson
+This software is copyright (c) 2015 by Erik Carlsson <info@code301.com>.
 
-# LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.

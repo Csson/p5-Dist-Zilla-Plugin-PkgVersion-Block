@@ -1,6 +1,11 @@
+use 5.14.0;
+
+# ABSTRACT: PkgVersion for block packages
+
 package Dist::Zilla::Plugin::PkgVersion::Block {
 
-    use 5.14.0;
+    # VERSION
+
     use Moose;
     with('Dist::Zilla::Role::FileMunger',
          'Dist::Zilla::Role::FileFinderUser' => { default_finders => [':InstallModules', ':ExecFiles'] },
@@ -93,15 +98,12 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
 }
 
 1;
+
 __END__
 
+=pod
+
 =encoding utf-8
-
-=head1 NAME
-
-Dist::Zilla::Plugin::PkgVersion::Block - L<PkgVersion|Dist::Zilla::Plugin::PkgVersion> for block packages.
-
-=for html <p><a style="float: left;" href="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block"><img src="https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block.svg?branch=master">&nbsp;</a>
 
 =head1 SYNOPSIS
 
@@ -126,15 +128,11 @@ for all packages in the distribution.
 
 The block package syntax was introduced in Perl 5.14, so this plugin is only usable in projects that only support 5.14+.
 
-There are no attributes:
+There are no attributes. However:
 
-=over 4
-
-Having an existing assignment to $VERSION in the file is a fatal error.
-
-Packages with a version number between the namespace and the block are silently skipped.
-
-=back
+=for :list
+* Having an existing assignment to $VERSION in the file is a fatal error.
+* Packages with a version number between the namespace and the block are silently skipped.
 
 =head1 KNOWN PROBLEMS
 
@@ -150,25 +148,8 @@ In files with more than one package block it is currently necessary to end (all 
 
 =head1 SEE ALSO
 
-=over 4
-
-=item * L<Dist::Zilla::Plugin::PkgVersion> (on which this is based)
-
-=item * L<Dist::Zilla::Plugin::OurPkgVersion>
-
-=back
-
-=head1 AUTHOR
-
-Erik Carlsson E<lt>info@code301.comE<gt>
-
-=head1 COPYRIGHT
-
-Copyright 2014- Erik Carlsson
-
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=for :list
+* L<Dist::Zilla::Plugin::PkgVersion> (on which this is based)
+* L<Dist::Zilla::Plugin::OurPkgVersion>
 
 =cut

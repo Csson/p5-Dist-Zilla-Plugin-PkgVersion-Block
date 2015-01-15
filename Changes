@@ -6,10 +6,12 @@ Revision history for Dist-Zilla-Plugin-PkgVersion-Block
  [Bug Fixes]
 
  [Documentation]
+ - Cleanup.
 
  [Enhancements]
 
  [Meta]
+ - Better dzil settings.
 
  [New Features]
 
