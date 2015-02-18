@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::PkgVersion::Block - PkgVersion for block packages
 
 # VERSION
 
-Version 0.0104, released 2015-01-15.
+Version 0.0105, released 2015-02-18.
 
 # SYNOPSIS
 

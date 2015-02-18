@@ -103,8 +103,6 @@ __END__
 
 =pod
 
-=encoding utf-8
-
 =head1 SYNOPSIS
 
     # dist.ini

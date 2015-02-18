@@ -2,6 +2,20 @@
 +doctype: dist
 name: Dist-Zilla-Plugin-PkgVersion-Block
 
+
++prereqs:
+  runtime:
+    requires:
+     - perl: 5.014000
+     - namespace::sweep: 0.006
+     - Moose: 2.0000
+     - PPI: 1.215
+     - MooseX::Types::Perl
+  test:
+    requires:
+     - Test::DZil: 5.000
+     - autodie: 2.00
+
 +plugins:
   - +config: Author::CSSON
 

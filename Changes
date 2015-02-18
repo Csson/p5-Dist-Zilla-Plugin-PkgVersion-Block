@@ -10,11 +10,19 @@ Revision history for Dist-Zilla-Plugin-PkgVersion-Block
  [Enhancements]
 
  [Meta]
- - Nothing was indexed. Now uses [MetaProvides::Package].
+ - Removed cpanfile, prereqs now in dist.ini.
 
  [New Features]
 
  [Revision]
+
+ [Requirements]
+ - Specified version for Test::DZil (needs 5.000).
+ - Various new Dist::Zilla plugins.
+
+0.0104 2015-01-15T17:27:07Z CET
+ [Meta]
+ - Nothing was indexed. Now uses [MetaProvides::Package].
 
 0.0103 2015-01-15T16:40:32Z CET
  [Documentation]
