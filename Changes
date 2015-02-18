@@ -10,11 +10,22 @@ Revision history for Dist-Zilla-Plugin-PkgVersion-Block
  [Enhancements]
 
  [Meta]
- - Removed cpanfile, prereqs now in dist.ini.
 
  [New Features]
 
+ [Requirements]
+
  [Revision]
+
+ [Testing]
+
+0.0106 2015-02-18T15:01:48Z CET
+ [Requirements]
+ - Listed consumed DZ roles as runtime prereqs.
+
+0.0105 2015-02-18T14:52:22Z CET
+ [Meta]
+ - Removed cpanfile, prereqs now in dist.ini.
 
  [Requirements]
  - Specified version for Test::DZil (needs 5.000).
