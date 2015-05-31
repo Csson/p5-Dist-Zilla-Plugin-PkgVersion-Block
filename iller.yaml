@@ -1,9 +1,11 @@
 ---
-+doctype: dist
-name: Dist-Zilla-Plugin-PkgVersion-Block
+doctype: dist
+
+header:
+  name: Dist-Zilla-Plugin-PkgVersion-Block
 
 
-+prereqs:
+prereqs:
   runtime:
     requires:
      - perl: 5.014000
@@ -19,7 +21,7 @@ name: Dist-Zilla-Plugin-PkgVersion-Block
      - Test::DZil: 5.000
      - autodie: 2.00
 
-+plugins:
+plugins:
   - +config: Author::CSSON
 
   - +add_plugin: TravisYML
@@ -27,8 +29,8 @@ name: Dist-Zilla-Plugin-PkgVersion-Block
     perl_version: 5.14 5.16 5.18 5.20
 
 ---
-+doctype: weaver
+doctype: weaver
 
-+plugins:
+plugins:
   - +config: Author::CSSON
   - +remove_plugin: Splint
