@@ -14,7 +14,7 @@ package Dist::Zilla::Plugin::PkgVersion::Block {
 
     use PPI;
     use MooseX::Types::Perl qw/StrictVersionStr/;
-    use namespace::sweep;
+    use namespace::autoclean;
 
     sub munge_files {
         my($self) = @_;

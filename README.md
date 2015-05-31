@@ -2,9 +2,11 @@
 
 Dist::Zilla::Plugin::PkgVersion::Block - PkgVersion for block packages
 
+![Requires Perl 5.14+](https://img.shields.io/badge/perl-5.14+-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block.svg?branch=master)](https://travis-ci.org/Csson/p5-Dist-Zilla-Plugin-PkgVersion-Block)
+
 # VERSION
 
-Version 0.0106, released 2015-02-18.
+Version 0.0107, released 2015-05-31.
 
 # SYNOPSIS
 

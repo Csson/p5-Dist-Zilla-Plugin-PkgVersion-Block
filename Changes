@@ -14,6 +14,7 @@ Revision history for Dist-Zilla-Plugin-PkgVersion-Block
  [New Features]
 
  [Requirements]
+ - Use namespace::autoclean (instead of namespace::sweep). Fixes #1.
 
  [Revision]
 
