@@ -9,7 +9,7 @@ prereqs:
   runtime:
     requires:
      - perl: 5.014000
-     - namespace::sweep: 0.006
+     - namespace::autoclean
      - Moose: 2.0000
      - PPI: 1.215
      - MooseX::Types::Perl
