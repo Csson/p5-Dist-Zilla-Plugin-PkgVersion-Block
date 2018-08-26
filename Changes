@@ -1,24 +1,12 @@
 Revision history for Dist-Zilla-Plugin-PkgVersion-Block
 
 {{$NEXT}}
- [API Changes]
+ [Other]
+ - Modernize packaging (no functional changes).
 
- [Bug Fixes]
-
- [Documentation]
-
- [Enhancements]
-
- [Meta]
-
- [New Features]
-
+0.0107 2015-05-31T15:27:16Z CEST
  [Requirements]
  - Use namespace::autoclean (instead of namespace::sweep). Fixes #1.
-
- [Revision]
-
- [Testing]
 
 0.0106 2015-02-18T15:01:48Z CET
  [Requirements]
