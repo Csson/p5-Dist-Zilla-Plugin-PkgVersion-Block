@@ -4,7 +4,8 @@ use 5.14.0;
 
 package Dist::Zilla::Plugin::PkgVersion::Block {
 
-    # VERSION
+# AUTHORITY
+our $VERSION = '0.0200';
 
     use Moose;
     with('Dist::Zilla::Role::FileMunger',
